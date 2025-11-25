@@ -10,7 +10,8 @@
   iframe.style.height = "650px";
   iframe.style.border = "none";
   iframe.style.zIndex = "999999999999999 !important";
-  iframe.style.borderRadius = "16px";
+  iframe.style.borderRadius = "0px";
+  iframe.style.overflow = "visible";
   iframe.style.pointerEvents = "auto";
 
 
