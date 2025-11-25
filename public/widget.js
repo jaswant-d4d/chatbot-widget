@@ -2,7 +2,7 @@
   console.log("...........")
   const iframe = document.createElement("iframe");
 
-  iframe.src = "http://localhost:5173/widget";
+  iframe.src = "https://chatbot-widget-seven-zeta.vercel.app/widget.js";
   iframe.style.position = "fixed";
   iframe.style.bottom = "20px";
   iframe.style.right = "20px";
