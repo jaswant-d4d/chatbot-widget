@@ -18,7 +18,8 @@
   iframe.style.boxShadow = "rgba(0, 0, 0, 0.12) 0px 12px 48px 4px";
   iframe.style.opacity = "1";
   iframe.style.visibility = "visible";
-  iframe.style.transform = "transform";
-  iframe.style.transition = "transform 300ms, opacity 300ms";
+
+
+
   document.body.appendChild(iframe);
 })();
