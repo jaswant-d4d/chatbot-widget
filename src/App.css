@@ -1,0 +1,52 @@
+@import "tailwindcss";
+@import url("./styles/global.css");
+@import url("/public/fonts/fonts.css");
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Base Styling */
+body {
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: "Mulish", sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.container {
+    width: 100%;
+    margin: auto;
+    padding: 0;
+    @media (width >= 40rem /* 640px */) {
+        max-width: 40rem /* 640px */;
+    }
+    @media (width >= 48rem /* 768px */) {
+        max-width: 48rem /* 768px */;
+    }
+    @media (width >= 64rem /* 1024px */) {
+        max-width: 64rem /* 1024px */;
+    }
+    @media (width >= 80rem /* 1280px */) {
+        max-width: 80rem /* 1280px */;
+    }
+    @media (width >= 96rem /* 1536px */) {
+        max-width: 96rem /* 1536px */;
+    }
+}
+
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
