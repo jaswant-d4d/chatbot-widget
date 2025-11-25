@@ -41,7 +41,7 @@ const Pagination = ({ totalPages, currentPage, onPageChange }: Props) => {
                             disabled={currentPage === 1}
                             className="flex items-center justify-center text-body bg-neutral-secondary-medium border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading shadow-xs font-medium leading-5 rounded-s-lg text-sm px-3 h-9 focus:outline-none hover:bg-gray-300 hover:font-semibold">Prev</button>
                     </li>
-                    {pages?.map((page, index) => (
+                    {pages?.map((page) => (
                         <li key={page} >
                             <button
                                 type='button'

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Avatar from '@/components/ui/Avatar'
-import { LogOut, Monitor, Moon, PanelRightClose, Settings, Sun, User } from 'lucide-react'
+import { LogOut, Moon, PanelRightClose, Settings, Sun, User } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext';
 import { useTheme } from '@/hooks/useTheme';
 import { Link } from 'react-router-dom';

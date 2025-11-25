@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getCompanies, deleteCompany } from "@/pages/superadmin/companies/api/companyApi";
 import Button from "@/components/ui/Button";
-import { Building2, Delete, Edit, Eye, LucideDelete, Trash } from "lucide-react";
+import { Building2, Edit, Eye, Trash } from "lucide-react";
 
 export interface CompanyType {
   id: string | number

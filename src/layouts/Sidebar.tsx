@@ -3,16 +3,18 @@ import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, ChevronUp, LogOut, MessageCircleMore } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { sidebarLinks } from "@/data/sidebarLinks";
+import type { LinkType } from "@/types/LinkType";
 
 interface SidebarProps {
     isOpen: boolean,
 }
+
 const Sidebar = memo(({ isOpen }: SidebarProps) => {
     const [openSections, setOpenSections] = useState<string[]>([]);
     const { pathname } = useLocation();
     const { user, logout } = useAuth();
     const role = "admin"
-    const links = sidebarLinks[user?.role === "admin" || role == "admin" ? "admin" : "user"];
+    const links: LinkType[] = sidebarLinks[user?.role === "admin" || role == "admin" ? "admin" : "user"];
 
     // Toggle accordion open/close
     const toggleSection = (id: string) => {
@@ -47,7 +49,7 @@ const Sidebar = memo(({ isOpen }: SidebarProps) => {
                         <nav className="flex-1 space-y-2 px-1.5 overflow-y-auto">
                             {links.map((item) => {
                                 // If it has subLinks → render accordion
-                                if (item?.subLinks) {
+                                if ("subLinks" in item) {
                                     const isSectionOpen = openSections.includes(item.id);
                                     const Icon = item.icon;
                                     return (
@@ -72,7 +74,7 @@ const Sidebar = memo(({ isOpen }: SidebarProps) => {
                                             {/* Sub Links */}
                                             {isSectionOpen && (
                                                 <div className={`pl-10 py-2 space-y-2 `}>
-                                                    {item.subLinks.map((sub) => (
+                                                    {item.subLinks.map((sub: any) => (
                                                         <Link
                                                             key={sub.path}
                                                             to={sub.path}

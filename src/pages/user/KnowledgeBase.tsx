@@ -47,15 +47,15 @@ export default function KnowledgeBasePage() {
         setFaqs((p) => p.filter((x) => x.id !== id));
     };
 
-    const handleCreateCategory = (name: string) => {
-        if (categories.includes(name)) return alert("Category already exists");
-        setCategories((c) => [name, ...c]);
-    };
+    // const handleCreateCategory = (name: string) => {
+    //     if (categories.includes(name)) return alert("Category already exists");
+    //     setCategories((c) => [name, ...c]);
+    // };
 
-    const handleDeleteCategory = (name: string) => {
-        if (!confirm(`Delete category "${name}"? This will not delete FAQs automatically.`)) return;
-        setCategories((c) => c.filter((x) => x !== name));
-    };
+    // const handleDeleteCategory = (name: string) => {
+    //     if (!confirm(`Delete category "${name}"? This will not delete FAQs automatically.`)) return;
+    //     setCategories((c) => c.filter((x) => x !== name));
+    // };
 
     const handleImport = (items: FAQItem[]) => {
         // merge imported items, avoid id collisions

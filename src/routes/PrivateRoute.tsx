@@ -16,13 +16,13 @@ export default function PrivateRoute({ children, allowedRoles }: PrivateRoutePro
     }
 
     // 🔒 If no user
-    // if (!user) {
-    //     return <Navigate to="/login" replace />;
-    // }
+    if (!user) {
+        return <Navigate to="/login" replace />;
+    }
 
-    // if (!allowedRoles.includes(user.role)) {
-    //     return <Navigate to="/" replace />;
-    // }
+    if (!allowedRoles.includes(user.role)) {
+        return <Navigate to="/" replace />;
+    }
 
     // Otherwise render children
     return <>{children}</>;

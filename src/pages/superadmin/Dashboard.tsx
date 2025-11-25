@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Users, ShoppingBag, Wallet, Activity, Home } from "lucide-react";
 import Chart from "react-apexcharts"
+import type { ApexOptions } from "apexcharts";
 
 const widgets = [
   {
@@ -61,7 +62,7 @@ export default function SuperAdminDashboard() {
           opacityTo: 0.1,
         },
       },
-    },
+    } as ApexOptions,
   });
 
 

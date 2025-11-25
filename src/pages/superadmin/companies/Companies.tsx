@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Building } from "lucide-react";
 
 import CompanyList from "./components/CompanyList";

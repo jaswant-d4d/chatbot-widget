@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { updateUserRole } from "../api/userApi";
+import type { User } from "./UserTable";
 
-export default function EditRoleModal({ user, close, reload }) {
+interface Props {
+  user: User
+  reload: () => void
+  close: () => void
+}
+
+export default function EditRoleModal({ user, close, reload }: Props) {
   const [role, setRole] = useState(user.role);
 
   async function handleSave() {

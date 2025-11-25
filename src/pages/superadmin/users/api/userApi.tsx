@@ -136,6 +136,6 @@ export async function getAllUsers() {
   ];
 }
 
-export async function updateUserRole(id: number, role: string) {
-  return { success: true };
+export async function updateUserRole(id: number | string, role: string) {
+  return { success: true, role, id };
 }

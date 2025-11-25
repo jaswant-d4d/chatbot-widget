@@ -1,6 +1,7 @@
-import { BookOpen, Bot, Home, MessageSquare } from "lucide-react";
-import React, { useState } from "react";
+import { useState } from "react";
 import Chart from "react-apexcharts";
+import type { ApexOptions } from "apexcharts";
+import { BookOpen, Bot, Home, MessageSquare } from "lucide-react";
 
 const stats = [
   {
@@ -70,7 +71,7 @@ export default function UserDashboard() {
           opacityTo: 0.1,
         },
       },
-    },
+    } as ApexOptions,
   });
 
   return (
