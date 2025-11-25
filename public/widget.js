@@ -1,5 +1,4 @@
 (function () {
-  console.log("...........")
   const iframe = document.createElement("iframe");
 
   iframe.src = "https://chatbot-widget-seven-zeta.vercel.app/widget";
