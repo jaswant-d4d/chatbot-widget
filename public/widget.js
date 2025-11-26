@@ -4,7 +4,7 @@
   const company = url.searchParams.get("company");
   const token = url.searchParams.get("token");
   const domain = window.location.hostname;
-
+  console.log(url, company, token, domain, "//iframe>>>>>>>>>>>>>>>>>>>>>>>>")
   // Build iframe URL with all the info
   const iframeUrl = `https://chatbot-widget-seven-zeta.vercel.app/widget?company=${company}&token=${token}&domain=${domain}`;
 
@@ -24,7 +24,7 @@
   iframe.style.zIndex = "999999999999999 !important";
   iframe.style.borderRadius = "0px";
   iframe.style.pointerEvents = "auto";
-  iframe.style.boxShadow = "rgba(0, 0, 0, 0.12) 0px 12px 48px 4px";
+  // iframe.style.boxShadow = "rgba(0, 0, 0, 0.12) 0px 12px 48px 4px";
   iframe.style.opacity = "1";
   iframe.style.visibility = "visible";
 
