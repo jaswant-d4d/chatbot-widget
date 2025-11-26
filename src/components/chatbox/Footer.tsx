@@ -3,9 +3,8 @@ import React, { useState, type FormEvent, type MouseEvent } from "react";
 import { useChat } from "@/contexts/ChatContext";
 
 const Footer = () => {
-
-    const { apiBaseUrl, isAuthenticated } = useAuth();
-    const { page, setBotTyping, setRegisterOpen, setMessages } = useChat();
+    const { apiBaseUrl } = useAuth();
+    const { page, setBotTyping, setMessages } = useChat();
     const [newMessage, setNewMessage] = useState("");
     const [loading, setLoading] = useState(false);
 
@@ -15,10 +14,6 @@ const Footer = () => {
 
     const submitHandler = async (e: FormEvent<HTMLFormElement> | MouseEvent<HTMLButtonElement>, overrideMessage?: string) => {
         e.preventDefault();
-        // if (!isAuthenticated) {
-        //     setRegisterOpen(true)
-        //     return false
-        // }
 
         const messageToSend = overrideMessage?.trim() || newMessage.trim();
         if (!messageToSend) return;

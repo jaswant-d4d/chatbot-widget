@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { useAuth } from "@/contexts/AuthContext";
 import { useChat } from "@/contexts/ChatContext";
 import { topics, knowledgeBase, type TopicKey } from "@/data/chatbot/KnowledgeBase";
 
@@ -11,8 +10,7 @@ interface MessageType {
 }
 
 const HomeView = () => {
-    const { isAuthenticated } = useAuth();
-    const { setPage, setBotTyping, setMessages, setRegisterOpen } = useChat();
+    const { setPage, setBotTyping, setMessages } = useChat();
 
     const [selectedTopic, setSelectedTopic] = useState<TopicKey | null>(null);
     const [step, setStep] = useState("select_topic");
@@ -102,10 +100,6 @@ const HomeView = () => {
                                     <button
                                         key={`topic-${i}`}
                                         onClick={() => {
-                                            // if (!isAuthenticated) {
-                                            //     setRegisterOpen(true)
-                                            //     return false
-                                            // }
                                             handleQuestionClick(item.question, item.answer)
                                             setPage("chat")
                                         }}
