@@ -11,7 +11,7 @@ const Register = lazy(() => import('../auth/Register'))
 const ClearConversationBox = lazy(() => import('./conversation/ClearConversationBox'))
 
 const Chatbox = () => {
-  const { isChatVisible, } = useChat();
+  const { isChatVisible } = useChat();
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {

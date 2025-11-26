@@ -10,7 +10,7 @@
 
   // Create iframe
   const iframe = document.createElement("iframe");
-  iframe.url = iframeUrl;
+  iframe.src = iframeUrl;
   iframe.style.position = "fixed";
   iframe.style.height = "90%";
   iframe.style.bottom = "24px";
