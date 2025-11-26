@@ -1,7 +1,16 @@
 (function () {
-  const iframe = document.createElement("iframe");
+  // Read query params from script tag
+  const url = new URL(document.currentScript.src);
+  const company = url.searchParams.get("company");
+  const token = url.searchParams.get("token");
+  const domain = window.location.hostname;
 
-  iframe.src = "https://chatbot-widget-seven-zeta.vercel.app/widget";
+  // Build iframe URL with all the info
+  const iframeUrl = `https://chatbot-widget-seven-zeta.vercel.app/widget?company=${company}&token=${token}&domain=${domain}`;
+
+  // Create iframe
+  const iframe = document.createElement("iframe");
+  iframe.url = iframeUrl;
   iframe.style.position = "fixed";
   iframe.style.height = "90%";
   iframe.style.bottom = "24px";
@@ -18,8 +27,6 @@
   iframe.style.boxShadow = "rgba(0, 0, 0, 0.12) 0px 12px 48px 4px";
   iframe.style.opacity = "1";
   iframe.style.visibility = "visible";
-
-
 
   document.body.appendChild(iframe);
 })();

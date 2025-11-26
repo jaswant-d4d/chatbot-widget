@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState, type Dispatch, type ReactNode, type SetStateAction } from "react";
 
 interface UserType {
-    role: "admin" | "user" | "Guest"; // ✅ fixed type
+    role: "admin" | "user" | "guest"; // ✅ fixed type
     userId: string;
     email: string;
     name?: string;
@@ -23,8 +23,14 @@ interface AuthProviderProps {
     children: ReactNode;
 }
 
+const fallbackCredentials: UserType = {
+    role: "admin",
+    userId: "1234567890",
+    email: "jaswant.d4d@gmail.com",
+    name: "Jaswant Singh"
+}
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-    const [user, setUser] = useState<UserType | null>(null);
+    const [user, setUser] = useState<UserType | null>(fallbackCredentials);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [loading, setLoading] = useState(true);
 
@@ -38,7 +44,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
             setUser(JSON.parse(storedUser));
             setIsAuthenticated(true);
         } else {
-            setUser(null);
+            // setUser(null);
+            setUser(fallbackCredentials);
             setIsAuthenticated(false);
         }
 

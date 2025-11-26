@@ -102,10 +102,10 @@ const HomeView = () => {
                                     <button
                                         key={`topic-${i}`}
                                         onClick={() => {
-                                            if (!isAuthenticated) {
-                                                setRegisterOpen(true)
-                                                return false
-                                            }
+                                            // if (!isAuthenticated) {
+                                            //     setRegisterOpen(true)
+                                            //     return false
+                                            // }
                                             handleQuestionClick(item.question, item.answer)
                                             setPage("chat")
                                         }}

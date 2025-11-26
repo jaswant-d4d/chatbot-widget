@@ -12,7 +12,7 @@ interface Props {
 const Header = ({ openMenu, menuToggle }: Props) => {
     const [isOpenDropdown, setIsOpenDropdown] = React.useState(false);
     const dropdownRef = React.useRef<HTMLDivElement>(null);
-    const { logout } = useAuth();
+    const { user, logout } = useAuth();
     const { theme, setTheme } = useTheme();
 
 
@@ -93,10 +93,10 @@ const Header = ({ openMenu, menuToggle }: Props) => {
                                 >
                                     <div className="py-2 px-3.5">
                                         <span className="font-medium text-gray-900 dark:text-white">
-                                            James Collison
+                                            {user?.name}
                                         </span>
                                         <p className="text-sm text-gray-500 dark:text-gray-400">
-                                            jamescollison@site.com
+                                            {user?.email}
                                         </p>
                                     </div>
 

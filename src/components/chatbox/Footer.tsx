@@ -15,10 +15,10 @@ const Footer = () => {
 
     const submitHandler = async (e: FormEvent<HTMLFormElement> | MouseEvent<HTMLButtonElement>, overrideMessage?: string) => {
         e.preventDefault();
-        if (!isAuthenticated) {
-            setRegisterOpen(true)
-            return false
-        }
+        // if (!isAuthenticated) {
+        //     setRegisterOpen(true)
+        //     return false
+        // }
 
         const messageToSend = overrideMessage?.trim() || newMessage.trim();
         if (!messageToSend) return;
