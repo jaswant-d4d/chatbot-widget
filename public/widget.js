@@ -21,7 +21,7 @@
   iframe.style.borderRadius = "8px";
   iframe.style.width = "100%";
   iframe.style.border = "none";
-  iframe.style.zIndex = "999999999999999 !important";
+  iframe.style.zIndex = 9999999999999;
   iframe.style.borderRadius = "0px";
   iframe.style.pointerEvents = "auto";
   // iframe.style.boxShadow = "rgba(0, 0, 0, 0.12) 0px 12px 48px 4px";
