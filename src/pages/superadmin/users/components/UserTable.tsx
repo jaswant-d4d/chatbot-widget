@@ -72,7 +72,7 @@ export default function UserTable({ users = [], reload, loading }: Props) {
                                         <td className="px-4 py-3">{user.email}</td>
                                         <td className="px-4 py-3">{user.companyName}</td>
                                         <td className="px-4 py-3">
-                                            <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">
+                                            <span className="px-2 py-1 capitalize bg-blue-100 text-blue-700 rounded text-xs">
                                                 {user.role}
                                             </span>
                                         </td>
@@ -80,7 +80,7 @@ export default function UserTable({ users = [], reload, loading }: Props) {
                                         <td className="px-4 py-3 text-right">
                                             <button
                                                 onClick={() => setShowModal(true)}
-                                                className="text-sm px-3 py-1 rounded bg-gray-200 hover:bg-gray-300"
+                                                className="text-sm px-3 py-1 rounded dark:bg-gray-600 dark:text-white bg-gray-200 hover:bg-gray-300"
                                             >
                                                 Change Role
                                             </button>

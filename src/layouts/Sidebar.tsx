@@ -13,8 +13,7 @@ const Sidebar = memo(({ isOpen }: SidebarProps) => {
     const [openSections, setOpenSections] = useState<string[]>([]);
     const { pathname } = useLocation();
     const { user, logout } = useAuth();
-    const role = "admin"
-    const links: LinkType[] = sidebarLinks[user?.role === "admin" || role == "admin" ? "admin" : "user"];
+    const links: LinkType[] = sidebarLinks[user?.role === "admin" ? "admin" : "user"];
 
     // Toggle accordion open/close
     const toggleSection = (id: string) => {

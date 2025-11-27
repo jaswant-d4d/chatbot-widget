@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Chart from "react-apexcharts";
 import type { ApexOptions } from "apexcharts";
 import { BookOpen, Bot, Home, MessageSquare } from "lucide-react";
+import { useTheme } from "@/hooks/useTheme";
 
 const stats = [
   {
@@ -35,44 +36,90 @@ const stats = [
 ];
 
 export default function UserDashboard() {
-  const [chartData] = useState({
-    series: [
-      {
-        name: "Messages",
-        data: [120, 180, 150, 200, 300, 250, 400],
-      },
-    ],
-    options: {
-      chart: {
-        type: "area",
-        height: 350,
-        toolbar: { show: false },
-      },
-      stroke: {
-        curve: "smooth",
-      },
-      dataLabels: { enabled: false },
-      xaxis: {
-        categories: [
-          "Mon",
-          "Tue",
-          "Wed",
-          "Thu",
-          "Fri",
-          "Sat",
-          "Sun",
-        ],
-      },
-      colors: ["#4f46e5"], // Indigo
-      fill: {
-        type: "gradient",
-        gradient: {
-          opacityFrom: 0.5,
-          opacityTo: 0.1,
+  const { theme } = useTheme()
+  const [shouldRenderChart, setShouldRenderChart] = useState(true);
+
+  // Completely unmount and remount chart when theme changes
+  useEffect(() => {
+    setShouldRenderChart(false);
+    const timer = setTimeout(() => {
+      setShouldRenderChart(true);
+    }, 50);
+
+    return () => clearTimeout(timer);
+  }, [theme]);
+  const chartData = useMemo(() => {
+    const isDark = theme === "dark";
+    const labelColors = Array(7).fill(isDark ? "#9ca3af" : "#6b7280");
+
+    return {
+      series: [
+        {
+          name: "Messages",
+          data: [120, 180, 150, 200, 300, 250, 400],
         },
-      },
-    } as ApexOptions,
-  });
+      ],
+      options: {
+        theme: {
+          mode: theme as "light" | "dark"
+        },
+        chart: {
+          type: "area",
+          height: 350,
+          toolbar: { show: false },
+          foreColor: isDark ? "#ffffff" : "#1e2939",
+          background: "transparent",
+        },
+        grid: {
+          borderColor: isDark ? "#374151" : "#e5e7eb",
+        },
+        stroke: {
+          curve: "smooth",
+        },
+        dataLabels: { enabled: false },
+        xaxis: {
+          categories: [
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "Sun",
+          ],
+          labels: {
+            style: {
+              colors: labelColors,
+            }
+          },
+          axisBorder: {
+            color: isDark ? "#374151" : "#e5e7eb",
+          },
+          axisTicks: {
+            color: isDark ? "#374151" : "#e5e7eb",
+          }
+        },
+        yaxis: {
+          labels: {
+            style: {
+              colors: labelColors,
+            }
+          }
+        },
+        colors: ["#4f46e5"],
+        fill: {
+          type: "gradient",
+          gradient: {
+            opacityFrom: 0.5,
+            opacityTo: 0.1,
+          },
+        },
+        tooltip: {
+          fillSeriesColor: true,
+        }
+      } as ApexOptions
+    }
+  }, [theme]);
 
   return (
     <div className="flex-1 ">
@@ -105,14 +152,20 @@ export default function UserDashboard() {
       </div>
 
       {/* Chart */}
-      <div className="bg-white text-gray-900 dark:bg-indigo-50  p-6 rounded-xl shadow mb-6">
+      <div className="bg-white text-gray-900 dark:bg-gray-800 dark:text-gray-200 p-4 sm:p-6 rounded-xl shadow-sm mb-6">
         <h2 className="text-lg font-semibold mb-4">Today's Usage</h2>
-        <Chart
-          options={chartData.options}
-          series={chartData.series}
-          type="area"
-          height={350}
-        />
+        {shouldRenderChart ? (
+          <Chart
+            options={chartData.options}
+            series={chartData.series}
+            type="area"
+            height={350}
+          />
+        ) : (
+          <div className="h-[350px] flex items-center justify-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
+          </div>
+        )}
       </div>
 
       {/* Recent Conversations */}

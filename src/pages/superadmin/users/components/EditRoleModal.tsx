@@ -18,7 +18,7 @@ export default function EditRoleModal({ user, close, reload }: Props) {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/40 flex justify-center items-center">
+    <div className="fixed inset-0 bg-black/10 flex justify-center items-center">
       <div className="bg-white w-96 rounded-xl p-6 shadow-xl">
         <h2 className="text-xl font-semibold mb-4">Change Role</h2>
 

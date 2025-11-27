@@ -7,7 +7,7 @@ export default function ViewCompany({ id, onBack }: any) {
     const [company, setCompany] = useState<CompanyType>();
 
     useEffect(() => {
-        setCompany({ id: 1, name: "Digital4design", email: "digital4designs@gmail.com", status: "Active" });
+        // setCompany({ id: 1, name: "Digital4design", email: "digital4designs@gmail.com", status: "Active" });
         load();
     }, []);
 

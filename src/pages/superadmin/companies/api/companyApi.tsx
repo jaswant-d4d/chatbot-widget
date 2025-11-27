@@ -1,4 +1,4 @@
-const API = `${import.meta.env.VITE_API_URL}/admin/companies`;
+const API = `${import.meta.env.VITE_BACKEND_LIVE_URL}/companies`;
 
 export const getCompanies = () => fetch(API).then(res => res.json());
 export const createCompany = (data: any) =>

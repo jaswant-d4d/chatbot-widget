@@ -36,5 +36,6 @@ export const sidebarLinks: Record<"admin" | "user", LinkType[]> = {
     },
 
     { name: "Settings", path: "/user/settings", icon: Settings },
+    { name: "Site Settings", path: "/user/site-settings", icon: Settings },
   ]
 };
