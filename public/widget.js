@@ -6,7 +6,7 @@
   const domain = window.location.hostname;
   console.log(url, company, token, domain, "//iframe>>>>>>>>>>>>>>>>>>>>>>>>")
   // Build iframe URL with all the info
-  const iframeUrl = `https://chatbot-widget-seven-zeta.vercel.app/widget?company=${encodeURIComponent(company)}&token=${encodeURIComponent(token)}&domain=${encodeURIComponent(domain)}`;
+  const iframeUrl = `https://chatbot-widget-seven-zeta.vercel.app/widget?company=${company}&token=${token}&domain=${domain}`;
 
   // Create iframe
   const iframe = document.createElement("iframe");
