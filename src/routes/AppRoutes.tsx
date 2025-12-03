@@ -88,7 +88,11 @@ export const router = createBrowserRouter([
 
   {
     path: "/widget",
-    element: <Widget />
+    element: (
+      <ErrorBoundary>
+        <Widget />
+      </ErrorBoundary>
+    )
   },
 
   // =========================

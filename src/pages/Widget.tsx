@@ -6,9 +6,9 @@ import { useAuth } from "@/contexts/AuthContext";
 
 export default function Widget() {
     const [isValid, setIsValid] = useState<null | boolean>(null);
+    const { apiBaseUrl } = useAuth()
 
     useEffect(() => {
-        const { apiBaseUrl } = useAuth()
         // Read query params from iframe URL
         const params = new URLSearchParams(window.location.search);
         const company = params.get("company");
