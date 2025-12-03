@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useChat } from "@/contexts/ChatContext";
 import { topics, knowledgeBase, type TopicKey } from "@/data/chatbot/KnowledgeBase";
+import { useAuth } from "@/contexts/AuthContext";
+import { ArrowLeft, MessageCircle } from "lucide-react";
 
 interface MessageType {
     sender: string
@@ -10,7 +12,8 @@ interface MessageType {
 }
 
 const HomeView = () => {
-    const { setPage, setBotTyping, setMessages } = useChat();
+    const { isAuthenticated } = useAuth();
+    const { setPage, setBotTyping, setMessages, setRegisterOpen } = useChat();
 
     const [selectedTopic, setSelectedTopic] = useState<TopicKey | null>(null);
     const [step, setStep] = useState("select_topic");
@@ -63,21 +66,21 @@ const HomeView = () => {
                         <p className='mb-4 font-medium'>💬 How can we assist you today?</p>
 
                     </div> */}
-                        <div className="bot-message bg-blue-50 rounded-lg p-3 sm:p-6 ">
-                            <h3 className="text-xl font-bold text-gray-800 leading-snug mb-2">👋 Hi there!</h3>
-                            <p className="text-sm sm:text-md font-semibold text-gray-900 mb-6">Welcome to <span className="text-blue-500">Digital4Design</span>.</p>
-                            <div className="flex items-center gap-2 text-gray-700 text-base mb-6">
-                                <span className="text-sm">💬</span>
-                                <p className="text-xs sm:text-sm">How can we assist you today?</p>
+                        <div className="bot-message bg-gray-100 rounded-lg shadow-md p-3 sm:p-4">
+                            <h3 className="text-2xl font-bold text-gray-800 leading-snug mb-2">👋 Hi there!</h3>
+                            <p className="text-base font-semibold text-gray-900 mb-6">Welcome to <span className="text-blue-500">Digital4Design</span>.</p>
+                            <div className="flex items-center gap-2 text-gray-700 text-base mb-2">
+                                <MessageCircle className="size-4" />
+                                <p className=" text-sm">How can we assist you today?</p>
                             </div>
                         </div>
-                        <div className="grid gap-3 py-4 ">
+                        <div className="grid gap-3 mt-8">
                             {topics.map((topic) => (
                                 <React.Fragment key={topic.key}>
                                     <button
                                         key={topic.key}
                                         onClick={() => handleTopicSelect(topic.key)}
-                                        className="bg-blue-50 text-xs sm:text-sm border px-2 sm:px-4 py-2 rounded-lg border-gray-400 shadow-md cursor-pointer hover:bg-blue-100 "
+                                        className="bg-gray-100 text-sm px-2 sm:px-4 py-2 rounded-lg  shadow-sm hover:shadow-md cursor-pointer hover:underline "
                                     >
                                         {topic.label}
                                     </button>
@@ -94,33 +97,31 @@ const HomeView = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: 0.05 }}
                     >
-                        <div className="bot-message my-4">
-                            <div className="space-y-3 mt-2">
+                        <button
+                            onClick={handleResetConversation}
+                            className="w-full text-blue-500 text-base text-center flex items-center gap-2 cursor-pointer hover:underline"
+                        >
+                            <ArrowLeft className="text-blue-500 size-4 sm:size-6" />
+                            Back to Topics
+                        </button>
+                        <div className="bot-message mt-8">
+                            <div className="flex flex-col items-start gap-3 w-full max-w-xs sm:max-w-sm md:max-w-md">
                                 {knowledgeBase[selectedTopic].map((item, i) => (
                                     <button
                                         key={`topic-${i}`}
                                         onClick={() => {
-                                            handleQuestionClick(item.question, item.answer)
-                                            setPage("chat")
+                                            if (!isAuthenticated) {
+                                                setRegisterOpen(true);
+                                                return;
+                                            }
+                                            handleQuestionClick(item.question, item.answer);
+                                            setPage("chat");
                                         }}
-                                        className="bg-blue-50 text-xs sm:text-sm border rounded-lg text-left px-2 sm:px-4 py-2 border-gray-400 cursor-pointer shadow-md hover:bg-blue-100"
+                                        className="bg-gray-100 text-sm rounded-lg text-left px-3 sm:px-4 py-2 shadow-sm hover:shadow-md transition cursor-pointer"
                                     >
                                         {item.question}
                                     </button>
                                 ))}
-                                <button
-                                    onClick={handleResetConversation}
-                                    className="w-full text-blue-500 text-xs sm:text-sm text-center mt-2 flex justify-center items-center cursor-pointer hover:underline"
-                                >
-                                    <svg className="text-blue-500 size-4 sm:size-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-                                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                                        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                                        <g id="SVGRepo_iconCarrier">
-                                            <path d="M6 12H18M6 12L11 7M6 12L11 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-                                        </g>
-                                    </svg>
-                                    Back to Topics
-                                </button>
                             </div>
                         </div>
                     </motion.div>

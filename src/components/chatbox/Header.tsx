@@ -30,7 +30,7 @@ const Header = () => {
     return (
         <>
             {/* Header */}
-            <div className="bg-blue-500 p-2 sm:p-4 absolute left-0 right-0 top-0">
+            <div className="bg-blue-500 py-2 px-4 absolute left-0 right-0 top-0">
                 <div className='text-white flex justify-between items-center '>
                     <div className='flex items-center space-x-1'>
                         {page === "chat" && (

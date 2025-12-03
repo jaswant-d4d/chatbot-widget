@@ -6,6 +6,7 @@ type FormValues = {
     name: string;
     email: string;
     phone: string;
+    userType: string;
 };
 
 type Errors = {
@@ -21,6 +22,7 @@ const Register = () => {
     const [formValues, setFormValues] = useState({
         name: "",
         email: "",
+        userType: "user",
         phone: "",
     })
     const [errors, setErrors] = useState({
@@ -59,6 +61,7 @@ const Register = () => {
             name: validateField("name", formValues.name),
             email: validateField("email", formValues.email),
             phone: validateField("phone", formValues.phone),
+            userType: validateField("userType", "user"),
         };
 
         setErrors(newErrors);
@@ -82,7 +85,7 @@ const Register = () => {
             setSubmitting(true);
             try {
                 console.log("Form submitting:", formValues);
-                const response = await fetch(`${apiBaseUrl}/register`, {
+                const response = await fetch(`${apiBaseUrl}/auth/signup`, {
                     method: "POST",
                     body: JSON.stringify(formValues),
                     headers: {
@@ -112,14 +115,14 @@ const Register = () => {
 
     return (
         <>
-            <div id="drawer-swipe" className={`absolute z-40 w-full overflow-y-auto bg-white border-t border-gray-200 rounded-2xl transition-transform bottom-0 left-0 right-0 
-                ${isRegisterOpen ? "translate-y-0" : "translate-y-full"}`} role={isRegisterOpen ? "dialog" : ""}>
+            <div id="drawer-swipe" className={`absolute z-40 w-full overflow-y-auto bg-white border-t border-gray-200 shadow-[0_-10px_25px_-5px_rgba(0,0,0,0.15)] rounded-t-2xl transition-transform bottom-0 left-0 right-0 ${isRegisterOpen ? "translate-y-0" : "translate-y-full"}`}
+                role={isRegisterOpen ? "dialog" : ""}>
                 <div className=" p-4 sm:p-8 ">
 
                     <div className="mb-5">
-                        <h3 className="text-center text-3xl font-semibold mb-6 text-slate-900">Register</h3>
+                        <h3 className="text-center text-2xl font-semibold mb-6 text-blue-500">Register</h3>
                     </div>
-                    <form onSubmit={handleSubmit} noValidate>
+                    <form onSubmit={handleSubmit} noValidate className="text-sm">
                         <div className="mb-5">
                             <label htmlFor="name" className="block font-medium text-gray-700 mb-1">Name <span className="text-red-500">*</span></label>
                             <input
@@ -131,7 +134,7 @@ const Register = () => {
                                 onChange={inputHandler}
                                 onBlur={handleBlur}
                                 value={formValues?.name} />
-                            {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+                            {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
 
                         </div>
                         <div className="mb-5 ">
@@ -145,10 +148,13 @@ const Register = () => {
                                 onChange={inputHandler}
                                 onBlur={handleBlur}
                                 value={formValues?.email} />
-                            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+                            {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                         </div>
                         <div className="mb-5">
-                            <label htmlFor="phone" className="block font-medium text-gray-700 mb-1">Phone Number <span className="text-xs ">(Optional)</span></label>
+                            <label htmlFor="phone" className="block font-medium text-gray-700 mb-1">
+                                Phone Number
+                                {/* <span className="text-xs ">(Optional)</span> */}
+                            </label>
                             <input
                                 type="text"
                                 className={`w-full border rounded px-4 py-2 ${errors.phone ? "border-red-500" : "border-gray-300"}`}
@@ -158,14 +164,14 @@ const Register = () => {
                                 onChange={inputHandler}
                                 onBlur={handleBlur}
                                 value={formValues?.phone} />
-                            {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+                            {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                         </div>
 
                         <div>
                             <button
                                 type="submit"
                                 disabled={submitting}
-                                className="w-full py-2 bg-gray-800 text-white rounded hover:bg-gray-800 transition-all duration-300 cursor-pointer"
+                                className="w-full py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-all duration-300 cursor-pointer"
                             >
                                 {submitting ?
                                     "Submitting..." : "Submit"

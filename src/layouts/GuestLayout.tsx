@@ -10,13 +10,13 @@ export default function GuestLayout() {
       {!isChatVisible ? (
         <button
           type="button"
-          className="fixed bottom-4 right-4 sm:bottom-10 sm:right-10 z-50 transition-all duration-300 shadow-lg rounded-4xl hover:scale-125"
+          className="fixed bottom-4 right-4 sm:bottom-10 sm:right-10 z-50 transition-all duration-300 shadow-lg rounded-4xl hover:scale-115"
           onClick={() => setChatVisible(true)}
         >
           <img
             src={ChatIcon}
             alt="Chat"
-            className="h-14 w-14 rounded-full object-cover shadow-lg hover:scale-105 transition-transform"
+            className="h-10 w-10 rounded-full object-cover"
           />
         </button>
       ) : (

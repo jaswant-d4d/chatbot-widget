@@ -1,9 +1,9 @@
 export type TopicKey = 'hiring' | 'services' | 'project';
 
 export const topics: { key: TopicKey; label: string }[] = [
-  { key: 'hiring', label: 'Hiring / Careers' },
-  { key: 'services', label: 'Our Services' },
-  { key: 'project', label: 'Project Inquiry' },
+  { key: 'hiring', label: 'Careers & Hiring' },
+  { key: 'services', label: 'Explore Services' },
+  { key: 'project', label: 'Start a Project' },
 ];
 
 export const knowledgeBase: Record<string, { question: string; answer: string }[]> = {
