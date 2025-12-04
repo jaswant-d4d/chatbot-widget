@@ -67,11 +67,11 @@ const HomeView = () => {
 
                     </div> */}
                         <div className="bot-message bg-gray-100 rounded-lg shadow-md p-3 sm:p-4">
-                            <h3 className="text-2xl font-bold text-gray-800 leading-snug mb-2">👋 Hi there!</h3>
-                            <p className="text-base font-semibold text-gray-900 mb-6">Welcome to <span className="text-blue-500">Digital4Design</span>.</p>
+                            <h3 className="text-xl md:text-2xl font-bold text-gray-800 leading-snug mb-2">👋 Hi there!</h3>
+                            <p className="text-sm md:text-base font-semibold text-gray-900 mb-6">Welcome to <span className="text-blue-500">Digital4Design</span>.</p>
                             <div className="flex items-center gap-2 text-gray-700 text-base mb-2">
                                 <MessageCircle className="size-4" />
-                                <p className=" text-sm">How can we assist you today?</p>
+                                <p className="text-xs md:text-sm">How can we assist you today?</p>
                             </div>
                         </div>
                         <div className="grid gap-3 mt-8">
@@ -80,7 +80,7 @@ const HomeView = () => {
                                     <button
                                         key={topic.key}
                                         onClick={() => handleTopicSelect(topic.key)}
-                                        className="bg-gray-100 text-sm px-2 sm:px-4 py-2 rounded-lg  shadow-sm hover:shadow-md cursor-pointer hover:underline "
+                                        className="bg-gray-100 text-xs md:text-sm px-2 sm:px-4 py-2 rounded-lg shadow-sm hover:shadow-md cursor-pointer hover:underline "
                                     >
                                         {topic.label}
                                     </button>
@@ -99,9 +99,9 @@ const HomeView = () => {
                     >
                         <button
                             onClick={handleResetConversation}
-                            className="w-full text-blue-500 text-base text-center flex items-center gap-2 cursor-pointer hover:underline"
+                            className="w-full text-blue-500 text-sm md:text-base text-center flex items-center gap-2 cursor-pointer hover:underline"
                         >
-                            <ArrowLeft className="text-blue-500 size-4 sm:size-6" />
+                            <ArrowLeft className="text-blue-500 size-4 md:size-6" />
                             Back to Topics
                         </button>
                         <div className="bot-message mt-8">
@@ -117,7 +117,7 @@ const HomeView = () => {
                                             handleQuestionClick(item.question, item.answer);
                                             setPage("chat");
                                         }}
-                                        className="bg-gray-100 text-sm rounded-lg text-left px-3 sm:px-4 py-2 shadow-sm hover:shadow-md transition cursor-pointer"
+                                        className="bg-gray-100 text-xs md:text-sm rounded-lg text-left px-3 sm:px-4 py-2 shadow-sm hover:shadow-md transition cursor-pointer"
                                     >
                                         {item.question}
                                     </button>

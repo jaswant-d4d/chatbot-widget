@@ -44,19 +44,19 @@ const ChatView = () => {
                 {/* Converations */}
                 {isChatLoading ? (
                     <div className="space-y-4 p-4">
-                        {Array.from({ length: 4 })?.map(() => (
+                        {Array.from({ length: 10 })?.map(() => (
                             <>
-                                <div className="flex items-start gap-2">
+                                <div className="flex items-start gap-3">
                                     <div className="w-8 h-8 rounded-full bg-gray-300 animate-pulse"></div>
                                     <div className="flex flex-col space-y-2">
-                                        <div className="w-48 h-4 rounded-lg bg-gray-300 animate-pulse"></div>
-                                        <div className="w-32 h-4 rounded-lg bg-gray-300 animate-pulse"></div>
+                                        <div className="w-48 h-3 rounded-lg bg-gray-300 animate-pulse"></div>
+                                        <div className="w-32 h-3 rounded-lg bg-gray-300 animate-pulse"></div>
                                     </div>
                                 </div>
                                 <div className="flex items-start justify-end gap-2">
                                     <div className="flex flex-col items-end space-y-2">
-                                        <div className="w-40 h-4 rounded-lg bg-gray-300 animate-pulse"></div>
-                                        <div className="w-24 h-4 rounded-lg bg-gray-300 animate-pulse"></div>
+                                        <div className="w-40 h-3 rounded-lg bg-gray-300 animate-pulse"></div>
+                                        <div className="w-24 h-3 rounded-lg bg-gray-300 animate-pulse"></div>
                                     </div>
                                     <div className="w-8 h-8 rounded-full bg-gray-300 animate-pulse"></div>
                                 </div>

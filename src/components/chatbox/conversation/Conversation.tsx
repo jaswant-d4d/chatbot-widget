@@ -24,7 +24,7 @@ const Conversation = () => {
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        className="flex justify-between px-14 items-center gap-5"
+                        className="flex justify-evenly items-center gap-5"
                     >
                         {/* Home Button */}
                         <button

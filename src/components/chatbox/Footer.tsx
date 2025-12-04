@@ -1,6 +1,7 @@
 import { useAuth } from "@/contexts/AuthContext";
 import React, { useState, type FormEvent, type MouseEvent } from "react";
 import { useChat } from "@/contexts/ChatContext";
+import { SendHorizontal } from "lucide-react";
 
 const Footer = () => {
     const { apiBaseUrl, isAuthenticated } = useAuth();
@@ -81,7 +82,7 @@ const Footer = () => {
                             name="message"
                             value={newMessage}
                             placeholder="Type your message..."
-                            className="w-full py-3  p-2 pr-8 border-t-1 border-slate-300 focus:outline-none text-sm"
+                            className="w-full py-3  p-2 pr-8 border-t-1 border-slate-300 focus:outline-none text-xs md:text-sm"
                             onChange={inputHandler}
                             autoComplete="off"
                             required
@@ -100,11 +101,7 @@ const Footer = () => {
                             aria-label="Send Message"
                         >
                             {/* {!loading ? ( */}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-5 sm:size-6">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M4.698 4.034l16.302 7.966l-16.302 7.966a.503 .503 0 0 1 -.546 -.124a.555 .555 0 0 1 -.12 -.568l2.468 -7.274l-2.468 -7.274a.555 .555 0 0 1 .12 -.568a.503 .503 0 0 1 .546 -.124z" />
-                                <path d="M6.5 12h14.5" />
-                            </svg>
+                            <SendHorizontal className="size-5 sm:size-6" />
                             {/* ) : (
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="min-w-10"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 14l11 -11" /><path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" /></svg>
                             )} */}
