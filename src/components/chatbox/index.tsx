@@ -10,14 +10,16 @@ import { AnimatePresence } from 'framer-motion';
 const Register = lazy(() => import('../auth/Register'))
 const ClearConversationBox = lazy(() => import('./conversation/ClearConversationBox'))
 
-const Chatbox = () => {
+const Chatbox = ({ defaultVisible = false }: { defaultVisible?: boolean }) => {
   const { isChatVisible } = useChat();
   const [showContent, setShowContent] = useState(false);
+
+  const finalVisible = defaultVisible || isChatVisible;
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
 
-    if (isChatVisible) {
+    if (finalVisible) {
       timer = setTimeout(() => {
         setShowContent(true);
       }, 1000); // 1 second delay
@@ -26,10 +28,10 @@ const Chatbox = () => {
     }
 
     return () => clearTimeout(timer); // Clear on cleanup
-  }, [isChatVisible]);
+  }, [finalVisible]);
 
 
-  if (!isChatVisible) return null;
+  if (!finalVisible) return null;
 
   return (
     <div className="fixed sm:p-0 bottom-0 right-0 sm:bottom-8 sm:right-8 h-full w-full z-50 transition-all ease-in-out duration-500 " >

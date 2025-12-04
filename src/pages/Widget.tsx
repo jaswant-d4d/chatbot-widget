@@ -29,7 +29,7 @@ export default function Widget() {
 
     return (
         <div className="w-full h-full">
-            <Chatbox />
+            <Chatbox defaultVisible={true} />
         </div>
     );
 }
