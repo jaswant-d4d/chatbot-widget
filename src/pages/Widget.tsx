@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import GuestLayout from "@/layouts/GuestLayout";
+import Chatbox from "@/components/chatbox";
 
 export default function Widget() {
     const [hasParams, setHasParams] = useState(true);
@@ -28,10 +28,8 @@ export default function Widget() {
     }
 
     return (
-        <div className="bg-transparent h-full w-full">
-            <div className="rounded-2xl shadow-2xl bg-white h-full overflow-visible">
-                <GuestLayout />
-            </div>
+        <div className="w-full h-full">
+            <Chatbox />
         </div>
     );
 }
