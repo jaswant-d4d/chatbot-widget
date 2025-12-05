@@ -46,7 +46,7 @@ const ChatView = () => {
                     <div className="space-y-4 p-4">
                         {Array.from({ length: 10 })?.map(() => (
                             <>
-                                <div className="flex items-start gap-3">
+                                <div className="flex items-start gap-2">
                                     <div className="w-8 h-8 rounded-full bg-gray-300 animate-pulse"></div>
                                     <div className="flex flex-col space-y-2">
                                         <div className="w-48 h-3 rounded-lg bg-gray-300 animate-pulse"></div>
